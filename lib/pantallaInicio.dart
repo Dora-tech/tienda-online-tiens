@@ -6,8 +6,15 @@ class PantallaInicio extends StatefulWidget {
 }
 
 class _PantallaInicioState extends State<PantallaInicio> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+ @override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text('Tienda Online Tiens 🛍️'),
+    ),
+    body: Center(
+      child: Text('Bienvenido a Tiens', style: TextStyle(fontSize: 24)),
+    ),
+  );
+}
 }
