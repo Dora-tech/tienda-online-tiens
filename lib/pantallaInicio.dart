@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pantallaCarta.dart';
 
 class PantallaInicio extends StatefulWidget {
   const PantallaInicio({Key? key}) : super(key: key); // ✅ Buenas prácticas
@@ -62,8 +63,13 @@ class _PantallaInicioState extends State<PantallaInicio> {
                   backgroundColor: const Color.fromARGB(255, 5, 116, 47),
                 ),
                 onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (BuildContext) => PantallaCarta(),
+                    ),
+                  );
                   // Acción del botón
-                  print('Botón presionado 🛒');
+                 // print('Botón presionado 🛒');
                 },
                 child: const Icon(
                   Icons.chevron_right,
