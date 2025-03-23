@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pantallaCarta.dart';
+import 'package:tienda_online_tiens/pantallaCarta.dart';
 
 class PantallaInicio extends StatefulWidget {
   const PantallaInicio({Key? key}) : super(key: key); // ✅ Buenas prácticas

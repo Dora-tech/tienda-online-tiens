@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pantallaInicio.dart';
+import 'package:tienda_online_tiens/pantallaInicio.dart';
 
 class PantallaCarta extends StatefulWidget {
   @override
@@ -7,14 +7,51 @@ class PantallaCarta extends StatefulWidget {
 }
 
 class _PantallaCartaState extends State<PantallaCarta> {
-  @override
+   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("CARTA"),
+    return DefaultTabController(
+      length: 3, // número de pestañas
+      child: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 213, 227, 205),
+        appBar: AppBar(
+          title: Text("CARTA"),
+          backgroundColor: const Color.fromARGB(255, 213, 227, 205),
+          elevation: 0,
+          bottom: TabBar(
+             labelColor: const Color.fromARGB(255, 5, 116, 47),
+              indicatorColor: const Color.fromARGB(255, 5, 116, 47),
+              indicatorSize: TabBarIndicatorSize.label,
+            tabs: <Widget>[
+              new Tab(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 1, right: 0),
+                  child: Text("SUPLEMENTO NUTRICIONAL",textAlign: TextAlign.center, softWrap: true, maxLines: 2,),
+                ),
+              ),
+              new Tab(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 5, right: 5),
+                  child: Text("BELLEZA",textAlign: TextAlign.center,),
+                ),
+              ),
+              new Tab(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 5, right: 5),
+                  child: Text("CUIDADO PERSONAL",textAlign: TextAlign.center,),
+                ),
+              ),
+            ]
+          )
+        ),
+        drawer: menuLateral(),
+        body: TabBarView(
+          children: <Widget>[
+            Container( child: Text("SUPLEMENTO NUTRICIONAL"),),
+            Container( child: Text("BELLEZA"),),
+            Container( child: Text("CUIDADO PERSONAL"),)
+          ],
+        ), // Aquí luego vas a poner TabBarView
       ),
-      drawer: menuLateral(),
-      body:Container(),
     );
   }
 }
