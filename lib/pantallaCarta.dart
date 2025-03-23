@@ -160,20 +160,49 @@ class _PantallaCartaState extends State<PantallaCarta> {
                       ],
                     ),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Image.asset("assets/img/" + belleza[index].imagen),
-                        Text(
-                          belleza[index].nombre,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: Image.asset(
+                            "assets/img/" + belleza[index].imagen,
+                            fit: BoxFit.contain,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Text(
-                            "S/. " + belleza[index].precio.toString(),
-                            style: const TextStyle(fontSize: 16),
-                           ),
+                        const SizedBox(height: 8),
+                        Text(
+                          belleza[index].nombre,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          "S/. ${belleza[index].precio}",
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(height: 8),
+                        ElevatedButton(
+                          onPressed: () {
+                            Provider.of<Carrito>(context, listen: false).agregarItem(
+                              belleza[index].id.toString(),
+                              belleza[index].nombre,
+                              belleza[index].precio,
+                              "unidad",
+                              belleza[index].imagen,
+                              1,
+                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Producto agregado al carrito")),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromARGB(255, 5, 116, 47),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          ),
+                          child: const Text("Agregar"),
                         ),
                       ],
                     ),
@@ -211,20 +240,49 @@ class _PantallaCartaState extends State<PantallaCarta> {
                       ],
                     ),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Image.asset("assets/img/" + cuidadoPersonal[index].imagen),
-                        Text(
-                          cuidadoPersonal[index].nombre,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: Image.asset(
+                            "assets/img/" + cuidadoPersonal[index].imagen,
+                            fit: BoxFit.contain,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Text(
-                           "S/. " + cuidadoPersonal[index].precio.toString(),
-                            style: const TextStyle(fontSize: 16),
-                           ),
+                        const SizedBox(height: 8),
+                        Text(
+                          cuidadoPersonal[index].nombre,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          "S/. ${cuidadoPersonal[index].precio}",
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(height: 8),
+                        ElevatedButton(
+                          onPressed: () {
+                            Provider.of<Carrito>(context, listen: false).agregarItem(
+                              cuidadoPersonal[index].id.toString(),
+                              cuidadoPersonal[index].nombre,
+                              cuidadoPersonal[index].precio,
+                              "unidad",
+                              cuidadoPersonal[index].imagen,
+                              1,
+                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Producto agregado al carrito")),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromARGB(255, 5, 116, 47),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          ),
+                          child: const Text("Agregar"),
                         ),
                       ],
                     ),
