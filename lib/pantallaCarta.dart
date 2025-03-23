@@ -3,6 +3,7 @@ import 'package:tienda_online_tiens/model/Carta.dart' show suplementoNutricional
 import 'package:tienda_online_tiens/pantallaInicio.dart';
 import 'package:provider/provider.dart';
 import 'package:tienda_online_tiens/carrito/Carrito.dart';
+import 'package:tienda_online_tiens/PantallaCarrito.dart';
 
 
 class PantallaCarta extends StatefulWidget {
@@ -48,6 +49,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
           )
         ),
         drawer: menuLateral(),
+           
         body: TabBarView(
           children: <Widget>[
             Container( 
@@ -99,30 +101,32 @@ class _PantallaCartaState extends State<PantallaCarta> {
                           style: const TextStyle(fontSize: 16),
                         ),
                         const SizedBox(height: 8),
-                        ElevatedButton(
-                          onPressed: () {
-                            Provider.of<Carrito>(context, listen: false).agregarItem(
-                              suplementoNutricional[index].id.toString(),
-                              suplementoNutricional[index].nombre,
-                              suplementoNutricional[index].precio,
-                              "unidad",
-                              suplementoNutricional[index].imagen,
-                              1,
-                            );
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text("Producto agregado al carrito")),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color.fromARGB(255, 5, 116, 47),
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        ElevatedButton.icon(
+                        onPressed: () {
+                          Provider.of<Carrito>(context, listen: false).agregarItem(
+                            suplementoNutricional[index].id.toString(),
+                            suplementoNutricional[index].nombre,
+                            suplementoNutricional[index].precio,
+                            "unidad",
+                            suplementoNutricional[index].imagen,
+                            1,
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Producto agregado al carrito")),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 5, 116, 47),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                          child: const Text("Agregar"),
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         ),
+                        icon: const Icon(Icons.add_shopping_cart, color: Colors.white), // Ícono carrito
+                        label: const Text("Agregar"),
+                         // Texto al lado
+                      ),
                       ],
                     ),
                   );
@@ -180,7 +184,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
                           style: const TextStyle(fontSize: 16),
                         ),
                         const SizedBox(height: 8),
-                        ElevatedButton(
+                        ElevatedButton.icon(
                           onPressed: () {
                             Provider.of<Carrito>(context, listen: false).agregarItem(
                               belleza[index].id.toString(),
@@ -202,7 +206,9 @@ class _PantallaCartaState extends State<PantallaCarta> {
                             ),
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                           ),
-                          child: const Text("Agregar"),
+                          icon: const Icon(Icons.add_shopping_cart, color: Colors.white), // Ícono carrito
+                          label: const Text("Agregar"),
+                         // Texto al lado
                         ),
                       ],
                     ),
@@ -260,7 +266,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
                           style: const TextStyle(fontSize: 16),
                         ),
                         const SizedBox(height: 8),
-                        ElevatedButton(
+                        ElevatedButton.icon(
                           onPressed: () {
                             Provider.of<Carrito>(context, listen: false).agregarItem(
                               cuidadoPersonal[index].id.toString(),
@@ -282,7 +288,9 @@ class _PantallaCartaState extends State<PantallaCarta> {
                             ),
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                           ),
-                          child: const Text("Agregar"),
+                           icon: const Icon(Icons.add_shopping_cart, color: Colors.white), // Ícono carrito
+                           label: const Text("Agregar"),
+                         // Texto al lado
                         ),
                       ],
                     ),
