@@ -1,22 +1,31 @@
 class Item {
-  String id = ""; // Inicializado para evitar error
-  String nombre = "";
-  double precio = 0.0;
-  String unidad = "";
-  String imagen = "";
-  int cantidad = 0; // Valor por defecto
+  final String id;
+  final String nombre;
+  final double precio;
+  final String unidad;
+  final String imagen;
+  final int cantidad;
 
-  Item(this.id, this.nombre, this.precio, this.unidad, this.imagen, this.cantidad);
+  // Constructor con parámetros nombrados y requeridos
+  Item({
+    required this.id,
+    required this.nombre,
+    required this.precio,
+    required this.unidad,
+    required this.imagen,
+    required this.cantidad,
+  });
 
-  Item.map(dynamic o) {
-    id = o["id"] ?? "";
-    nombre = o["nombre"] ?? "";
-    precio = o["precio"] ?? 0.0;
-    unidad = o["unidad"] ?? "";
-    imagen = o["imagen"] ?? "";
-    cantidad = o["cantidad"] ?? 0;
-  }
+  // Constructor alternativo desde un mapa (por ejemplo: JSON)
+  Item.fromMap(Map<String, dynamic> o)
+      : id = o["id"],
+        nombre = o["nombre"],
+        precio = o["precio"],
+        unidad = o["unidad"],
+        imagen = o["imagen"],
+        cantidad = o["cantidad"];
 
+  // Convertir a mapa para guardar en base de datos o enviar como JSON
   Map<String, dynamic> toMap() {
     return {
       "id": id,
@@ -29,13 +38,6 @@ class Item {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "nombre": nombre,
-      "precio": precio,
-      "unidad": unidad,
-      "imagen": imagen,
-      "cantidad": cantidad,
-    };
+    return toMap(); // reutiliza el mismo método
   }
 }
