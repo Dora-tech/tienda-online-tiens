@@ -12,16 +12,75 @@ class PantallaCarta extends StatefulWidget {
 }
 
 class _PantallaCartaState extends State<PantallaCarta> {
+   
+
    @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3, // número de pestañas
       child: Scaffold(
+          
         backgroundColor: const Color.fromARGB(255, 213, 227, 205),
         appBar: AppBar(
           title: Text("CARTA"),
           backgroundColor: const Color.fromARGB(255, 213, 227, 205),
           elevation: 0,
+
+         actions: <Widget>[
+            Stack(
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.shopping_cart),
+                  onPressed: () {
+                    final carrito = Provider.of<Carrito>(context, listen: false);
+                    
+                   if (carrito.numeroItems != 0) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Ir a carrito", textAlign: TextAlign.center),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Llenar el carrito", textAlign: TextAlign.center),
+                        ),
+                      );
+                    }
+
+                  },
+                ),
+                Positioned(
+                  right: 6,
+                  top: 6,
+                  child: Container(
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    constraints: BoxConstraints(
+                      minWidth: 14,
+                      minHeight: 14,
+                    ),
+                    child: Consumer<Carrito>(
+                      builder: (context, carrito, child) {
+                        return Text(
+                          carrito.numeroItems.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                          ),
+                          textAlign: TextAlign.center,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ],
+
           bottom: TabBar(
              labelColor: const Color.fromARGB(255, 5, 116, 47),
               indicatorColor: const Color.fromARGB(255, 5, 116, 47),
