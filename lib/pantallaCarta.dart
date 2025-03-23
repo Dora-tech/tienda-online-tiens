@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tienda_online_tiens/model/Carta.dart' show suplementoNutricional, belleza, cuidadoPersonal;
 import 'package:tienda_online_tiens/pantallaInicio.dart';
+
 
 class PantallaCarta extends StatefulWidget {
   @override
@@ -46,11 +48,163 @@ class _PantallaCartaState extends State<PantallaCarta> {
         drawer: menuLateral(),
         body: TabBarView(
           children: <Widget>[
-            Container( child: Text("SUPLEMENTO NUTRICIONAL"),),
-            Container( child: Text("BELLEZA"),),
-            Container( child: Text("CUIDADO PERSONAL"),)
+            Container( 
+             padding: const EdgeInsets.all(10),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: suplementoNutricional.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: MediaQuery.of(context).size.width /
+                      (MediaQuery.of(context).size.height / 1.5),
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 2,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: const EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color(0x6600005C),
+                          blurRadius: 30,
+                          offset: Offset(10, 10),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("assets/img/" + suplementoNutricional[index].imagen),
+                        Text(
+                          suplementoNutricional[index].nombre,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(
+                            "S/. " + suplementoNutricional[index].precio.toString(),
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            
+            // BELLEZA
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: belleza.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: MediaQuery.of(context).size.width /
+                      (MediaQuery.of(context).size.height / 1.5),
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 2,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: const EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color(0x6600005C),
+                          blurRadius: 30,
+                          offset: Offset(10, 10),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("assets/img/" + belleza[index].imagen),
+                        Text(
+                          belleza[index].nombre,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(
+                            "S/. " + belleza[index].precio.toString(),
+                            style: const TextStyle(fontSize: 16),
+                           ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            // CUIDADO PERSONAL
+            Container(
+                padding: const EdgeInsets.all(10),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: cuidadoPersonal.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: MediaQuery.of(context).size.width /
+                      (MediaQuery.of(context).size.height / 1.5),
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 2,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: const EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color(0x6600005C),
+                          blurRadius: 30,
+                          offset: Offset(10, 10),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("assets/img/" + cuidadoPersonal[index].imagen),
+                        Text(
+                          cuidadoPersonal[index].nombre,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(
+                           "S/. " + cuidadoPersonal[index].precio.toString(),
+                            style: const TextStyle(fontSize: 16),
+                           ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+
+            )
+    
           ],
-        ), // Aquí luego vas a poner TabBarView
+        ),
       ),
     );
   }
@@ -132,7 +286,6 @@ class menuLateral extends StatelessWidget{
               );
             },
           ),
-
         ],
       )
     );

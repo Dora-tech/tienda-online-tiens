@@ -41,7 +41,7 @@ final suplementoNutricional = [
     id: 4,
     nombre: "Tianshi Zinc",
     precio: 35.50,
-    imagen: "tetianshi.jpg",
+    imagen: "te_tianshi.jpg",
     descripcion: "Apoya el sistema inmune y mejora el metabolismo.",
   ),
 ];
@@ -50,16 +50,16 @@ final suplementoNutricional = [
 final belleza = [
   Carta(
     id: 5,
-    nombre: "Mascarilla Facial Revitalizante",
+    nombre: "Mascarilla Facial Rev",
     precio: 24.50,
-    imagen: "limpiador-facial.jpg",
+    imagen: "limpiador-facial.jpeg",
     descripcion: "Limpia profundamente y da brillo natural a la piel.",
   ),
   Carta(
     id: 6,
     nombre: "Crema Blanqueadora",
     precio: 29.90,
-    imagen: "all_in_cream.jpg",
+    imagen: "all_in_cream.jpeg",
     descripcion: "Aclara la piel con extractos naturales sin irritaciones.",
   ),
   Carta(
@@ -71,7 +71,7 @@ final belleza = [
   ),
   Carta(
     id: 8,
-    nombre: "Serum de Belleza Colágeno",
+    nombre: "Serum de Belleza",
     precio: 59.00,
     imagen: "facial_essence.jpeg",
     descripcion: "Aporta firmeza y elasticidad a la piel madura.",
@@ -89,23 +89,23 @@ final cuidadoPersonal = [
   ),
   Carta(
     id: 10,
-    nombre: "cilvaris",
+    nombre: "capilar",
     precio: 28.90,
-    imagen: "cilvaris-275x324.jpg",
-    descripcion: "masajeador facial.",
+    imagen: "capilar-masajeador.png",
+    descripcion: "masajeador.",
   ),
   Carta(
     id: 11,
-    nombre: "Masajeador de circulacion sanguinea",
+    nombre: "Masajeador circulacion",
     precio: 12.90,
     imagen: "Masajeador-de-circulacion-sanguinea.jpeg",
     descripcion: "Masajeador de circulacion sanguinea.",
   ),
   Carta(
     id: 12,
-    nombre: "Toallas Húmedas Aromáticas",
+    nombre: "Toallas Húmedas",
     precio: 8.90,
-    imagen: "toallas-airiz.jpg",
+    imagen: "toallas-airiz.png",
     descripcion: "Frescura al instante con aroma suave y natural.",
   ),
 ];
