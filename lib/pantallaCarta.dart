@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tienda_online_tiens/model/Carta.dart' show suplementoNutricional, belleza, cuidadoPersonal;
 import 'package:tienda_online_tiens/pantallaInicio.dart';
+import 'package:provider/provider.dart';
+import 'package:tienda_online_tiens/carrito/Carrito.dart';
 
 
 class PantallaCarta extends StatefulWidget {
@@ -77,20 +79,49 @@ class _PantallaCartaState extends State<PantallaCarta> {
                       ],
                     ),
                     child: Column(
+                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Image.asset("assets/img/" + suplementoNutricional[index].imagen),
-                        Text(
-                          suplementoNutricional[index].nombre,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: Image.asset(
+                            "assets/img/" + suplementoNutricional[index].imagen,
+                            fit: BoxFit.contain,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Text(
-                            "S/. " + suplementoNutricional[index].precio.toString(),
-                            style: const TextStyle(fontSize: 16),
+                        const SizedBox(height: 8),
+                        Text(
+                          suplementoNutricional[index].nombre,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          "S/. ${suplementoNutricional[index].precio}",
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(height: 8),
+                        ElevatedButton(
+                          onPressed: () {
+                            Provider.of<Carrito>(context, listen: false).agregarItem(
+                              suplementoNutricional[index].id.toString(),
+                              suplementoNutricional[index].nombre,
+                              suplementoNutricional[index].precio,
+                              "unidad",
+                              suplementoNutricional[index].imagen,
+                              1,
+                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Producto agregado al carrito")),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromARGB(255, 5, 116, 47),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                           ),
+                          child: const Text("Agregar"),
                         ),
                       ],
                     ),
