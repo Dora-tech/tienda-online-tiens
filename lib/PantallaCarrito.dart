@@ -149,20 +149,22 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                   "\nCANTIDAD: ${value.cantidad}" +
                   "\nPRECIO UNITARIO: ${value.precio}" +
                   "\nPRECIO TOTAL: ${(value.cantidad * value.precio).toStringAsFixed(2)}\n\n";
+              // "\n****************************\n";
               });
 
               pedido += "SUBTOTAL: ${carrito.subTotal.toStringAsFixed(2)}\n";
               pedido += "IMPUESTO: ${carrito.impuesto.toStringAsFixed(2)}\n";
               pedido += "TOTAL: ${carrito.total.toStringAsFixed(2)}\n";
 
-              // Tu número actualizado aquí 👇
-              final Uri url = Uri.parse("https://wa.me/51931850213?text=${Uri.encodeComponent(pedido)}");
+              // Tu número actualizado aquí 
+               final Uri url = Uri.parse("https://wa.me/51931850213?text=${Uri.encodeComponent(pedido)}");
 
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              } else {
-                throw 'No se pudo abrir WhatsApp';
-              }
+            if (!await launchUrl(
+              url,
+              mode: LaunchMode.externalApplication, //  importante
+            )) {
+              throw 'No se pudo abrir WhatsApp';
+            }
             },
             backgroundColor: const Color.fromARGB(255, 5, 116, 47),
             child: Icon(Icons.send),

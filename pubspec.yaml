@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  url_launcher: ^6.1.7
+  url_launcher: ^6.1.11
   provider: ^6.1.1
   cupertino_icons: ^1.0.8
 
