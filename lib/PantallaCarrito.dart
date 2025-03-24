@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tienda_online_tiens/carrito/Carrito.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PantallaCarrito extends StatefulWidget {
   
@@ -23,7 +24,7 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
             child: carrito.items.length == 0
                 ? Center(child: Text("Carrito Vacío"))
                 : Column(
-                    children: <Widget>[
+                    children: <Widget>[     
                       for (var item in carrito.items.values)
                         Card(
                            margin: EdgeInsets.all(10),
@@ -133,10 +134,37 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                             ],
                           ),
                         ),
-
                     ],
                   ),
           ),
+
+          floatingActionButton: FloatingActionButton(
+            onPressed: () async {
+              String pedido = "";
+              carrito.items.forEach((key, value) {
+                pedido = '$pedido' +
+                  value.nombre +
+                  "\nCANTIDAD: ${value.cantidad}" +
+                  "\nPRECIO UNITARIO: ${value.precio}" +
+                  "\nPRECIO TOTAL: ${(value.cantidad * value.precio).toStringAsFixed(2)}\n\n";
+              });
+
+              pedido += "SUBTOTAL: ${carrito.subTotal.toStringAsFixed(2)}\n";
+              pedido += "IMPUESTO: ${carrito.impuesto.toStringAsFixed(2)}\n";
+              pedido += "TOTAL: ${carrito.total.toStringAsFixed(2)}\n";
+
+              final Uri url = Uri.parse("https://wa.me/51987654321?text=${Uri.encodeComponent(pedido)}");
+
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              } else {
+                throw 'No se pudo abrir WhatsApp';
+              }
+            },
+            backgroundColor: Colors.red,
+            child: Icon(Icons.send),
+          ),
+
         );
       },
     );
