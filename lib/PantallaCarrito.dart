@@ -99,6 +99,41 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                               ],
                             ),
                         ),
+                        
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Text("Subtotal:"),
+                              ),
+                              Text("S/. " + carrito.subTotal.toStringAsFixed(2)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Text("Impuesto:"),
+                              ),
+                              Text("S/. " + carrito.impuesto.toStringAsFixed(2)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Text("Total:"),
+                              ),
+                              Text("S/. " + carrito.total.toStringAsFixed(2)),
+                            ],
+                          ),
+                        ),
+
                     ],
                   ),
           ),
