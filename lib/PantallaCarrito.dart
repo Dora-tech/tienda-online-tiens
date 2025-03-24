@@ -16,8 +16,10 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
     return Consumer<Carrito>(
       builder: (context, carrito, child) {
         return Scaffold(
+          backgroundColor: const Color.fromARGB(255, 213, 227, 205),
           appBar: AppBar(
             title: Text("PEDIDOS"),
+            backgroundColor: const Color.fromARGB(2255, 213, 227, 205),
             elevation: 0,
           ),
           body: Container(
@@ -57,7 +59,7 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                                               width: 50,
                                               height: 30,
                                               decoration: BoxDecoration(
-                                                color: Colors.red,
+                                                color: const Color.fromARGB(255, 5, 116, 47),
                                                 borderRadius: BorderRadius.all(Radius.circular(30)),
                                               ),
                                             ),
@@ -77,7 +79,7 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                                               width: 50,
                                               height: 30,
                                               decoration: BoxDecoration(
-                                                color: Colors.red,
+                                                color: const Color.fromARGB(255, 5, 116, 47),
                                                 borderRadius: BorderRadius.all(Radius.circular(30)),
                                               ),
                                             ),
@@ -153,7 +155,8 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
               pedido += "IMPUESTO: ${carrito.impuesto.toStringAsFixed(2)}\n";
               pedido += "TOTAL: ${carrito.total.toStringAsFixed(2)}\n";
 
-              final Uri url = Uri.parse("https://wa.me/51987654321?text=${Uri.encodeComponent(pedido)}");
+              // Tu número actualizado aquí 👇
+              final Uri url = Uri.parse("https://wa.me/51931850213?text=${Uri.encodeComponent(pedido)}");
 
               if (await canLaunchUrl(url)) {
                 await launchUrl(url);
@@ -161,7 +164,7 @@ class _PantallaCarritoState extends State<PantallaCarrito> {
                 throw 'No se pudo abrir WhatsApp';
               }
             },
-            backgroundColor: Colors.red,
+            backgroundColor: const Color.fromARGB(255, 5, 116, 47),
             child: Icon(Icons.send),
           ),
 
