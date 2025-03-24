@@ -3,8 +3,7 @@ import 'package:tienda_online_tiens/model/Carta.dart' show suplementoNutricional
 import 'package:tienda_online_tiens/pantallaInicio.dart';
 import 'package:provider/provider.dart';
 import 'package:tienda_online_tiens/carrito/Carrito.dart';
-import 'package:tienda_online_tiens/PantallaCarrito.dart';
-
+import 'package:tienda_online_tiens/pantallaCarrito.dart';
 
 class PantallaCarta extends StatefulWidget {
   @override
@@ -16,6 +15,7 @@ class _PantallaCartaState extends State<PantallaCarta> {
 
    @override
   Widget build(BuildContext context) {
+   //return Consumer<Carrito>(builder: (context, carrito, child){}) 
     return DefaultTabController(
       length: 3, // número de pestañas
       child: Scaffold(
@@ -33,11 +33,11 @@ class _PantallaCartaState extends State<PantallaCarta> {
                   icon: Icon(Icons.shopping_cart),
                   onPressed: () {
                     final carrito = Provider.of<Carrito>(context, listen: false);
-                    
-                   if (carrito.numeroItems != 0) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text("Ir a carrito", textAlign: TextAlign.center),
+
+                    if (carrito.numeroItems != 0) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => PantallaCarrito(),
                         ),
                       );
                     } else {
@@ -47,7 +47,6 @@ class _PantallaCartaState extends State<PantallaCarta> {
                         ),
                       );
                     }
-
                   },
                 ),
                 Positioned(
@@ -414,7 +413,7 @@ class menuLateral extends StatelessWidget{
           // Botón RESTAURANT
           InkWell(
             child: ListTile(
-              title: Text("RESTAURANT",
+              title: Text("TIENDA TIENS",
                   style: TextStyle(color: const Color.fromARGB(2255, 5, 116, 47))),
               leading: Icon(Icons.account_box, color: const Color.fromARGB(255, 5, 116, 47)),
             ),
